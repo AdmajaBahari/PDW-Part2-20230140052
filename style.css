@@ -7,7 +7,7 @@
 body {
   font-family: 'Nunito', sans-serif;
   min-height: 100vh;
-  background: linear-gradient(160deg, #c8cfd8 0%, #dde3ea 30%, #b8c2cc 70%, #a9b5c2 100%);
+  background: linear-gradient(160deg, hsl(0, 0%, 19%) 0%, #dde3ea 30%, #b8c2cc 70%, #1d1d1d 100%);
 }
 
 /* ===== NAVBAR ===== */
@@ -22,7 +22,7 @@ nav {
 nav .logo {
   font-weight: 700;
   font-size: 1.1rem;
-  color: #2a2a2a;
+  color: #ffffff;
 }
 
 nav ul {
@@ -33,7 +33,7 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #2a2a2a;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1rem;
 }
