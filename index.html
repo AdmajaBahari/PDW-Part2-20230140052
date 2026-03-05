@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naruto - Admaja Bahari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(160deg, hsl(0, 0%, 19%) 0%, #dde3ea 30%, #b8c2cc 70%, #1d1d1d 100%);
+      padding: 0;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      background: transparent;
+    }
+    nav .logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav ul li a:hover { color: #555; }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 36px 20px 20px;
+    }
+    .hero h1 {
+      font-family: 'Bangers', cursive;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+      font-weight: 400;
+    }
+    .hero p {
+      margin-top: 12px;
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .hero p strong { color: #222; }
+    .hero .tagline {
+      margin-top: 6px;
+      font-style: italic;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    /* ===== CARDS - BROWSER STYLE ===== */
+    .card {
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 16px;
+      margin: 18px auto;
+      max-width: 680px;
+      padding: 40px 24px 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    /* Bar atas browser */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 32px;
+      background: rgba(220, 222, 226, 0.6);
+      border-radius: 16px 16px 0 0;
+      border-bottom: 1px solid #d0d1d5;
+    }
+
+    /* Titik merah, kuning, hijau */
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      width: 12px;
+      height: 12px;
+      background: #ff5f57;
+      border-radius: 50%;
+      box-shadow: 20px 0 0 #febc2e, 40px 0 0 #28c840;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .about-card img {
+      width: 130px;
+      min-width: 130px;
+      border-radius: 12px;
+      box-shadow: 2px 4px 14px rgba(0,0,0,0.18);
+      object-fit: cover;
+    }
+    .about-card .about-text h2 {
+      font-family: 'Bangers', cursive;
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .about-card .about-text p {
+      color: #333;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .learn-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2a2a2a;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+
+      margin-top: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      font-family: 'Nunito', sans-serif;
+      transition: background 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .learn-more-btn:hover { background: #444; }
+    .learn-more-btn::before { content: "▶"; font-size: 0.85rem; }
+
+    /* wrapper biar tombol rata kanan */
+    .btn-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 4px;
+    }
+
+    /* ===== CHARACTERS SECTION ===== */
+    .chars-card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 18px;
+    }
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .character-item {
+      text-align: center;
+    }
+    .character-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+      background: #ddd;
+    }
+    .character-item .char-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e8c97a, #d4a843);
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    .character-item p {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    /* ===== WHY SECTION ===== */
+    .why-card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    .why-card ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .why-card ol li {
+      color: #333;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    /* ===== QUOTES SECTION ===== */
+    .quotes-card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    .quote-item {
+      margin-bottom: 16px;
+    }
+    .quote-item:last-child {
+      margin-bottom: 0;
+    }
+    .quote-text {
+      text-align: center;
+      font-style: italic;
+      color: #333;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+    .quote-author {
+      text-align: center;
+      font-style: normal;
+      font-weight: 700;
+      color: #555;
+      margin-top: 6px;
+      font-size: 0.7rem;
+    }
+
+    /* ===== CLEARFIX ===== */
+    .cf::after { content: ""; display: table; clear: both; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 500px) {
+      .characters-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-card { flex-direction: column; }
+      .about-card img { width: 100%; min-width: unset; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">🍥 Websitee</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Story</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Welcome to My Website</h1>
+    <p>Hello, my name is <strong>Admaja Bahari - 20230140052</strong>, and in this assignment,<br>
+    I will discuss one of my favorite anime, 1st Naruto.</p>
+    <p class="tagline">Let's get started!</p>
+  </div>
+
+  <!-- ABOUT NARUTO CARD -->
+  <div class="card cf">
+    <div class="about-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg" alt="Naruto Cover">
+      <div class="about-text">
+        <h2>ABOUT NARUTO</h2>
+        <p>When Masashi Kishimoto first created the Naruto series, he looked to other shōnen manga for inspiration when creating a unique character. Kishimoto cited Akira Toriyama's series Dragon Ball as one of his inspirations. Goku, the main character in Dragon Ball, was a major factor in the creation of Naruto Uzumaki due to his energetic and mischievous personality.</p>
+      </div>
+    </div>
+    <div class="btn-wrapper"><button class="learn-more-btn">Learn More</button></div>
+  </div>
+
+  <!-- FAVORITE CHARACTERS CARD -->
+  <div class="card chars-card">
+    <h2>Favorite Characters</h2>
+    <div class="characters-grid">
+      <div class="character-item">
+        <img src="https://i.pinimg.com/736x/ec/ab/1d/ecab1d87090a3fa4d194697f7f73e55c.jpg" alt="Naruto Uzumaki" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="char-placeholder" style="display:none;">🍥</div>
+        <p>Naruto Uzumaki</p>
+      </div>
+      <div class="character-item">
+        <img src="https://i.pinimg.com/1200x/ff/42/c2/ff42c2fe40ffcfa5d99fc86ac7ddb6bb.jpg" alt="Madara Uchiha" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="char-placeholder" style="display:none; background: linear-gradient(135deg, #b0b0b0, #6a6a6a);">⚡</div>
+        <p>Madara Uchiha</p>
+      </div>
+      <div class="character-item">
+        <img src="https://i.pinimg.com/736x/f5/26/1c/f5261ca495668875eb5e9c904907ed34.jpg" alt="Itachi Uchiha" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="char-placeholder" style="display:none; background: linear-gradient(135deg, #7a7a9e, #3a3a5c);">🌙</div>
+        <p>Itachi Uchiha</p>
+      </div>
+      <div class="character-item">
+        <img src="https://i.pinimg.com/1200x/4f/53/54/4f5354f524e701b422dbcad518d5e570.jpg" alt="Jiraiya" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="char-placeholder" style="display:none; background: linear-gradient(135deg, #d4a843, #8a6020);">🐸</div>
+        <p>Jiraiya Sensei</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY I LIKE NARUTO CARD -->
+  <div class="card why-card">
+    <h2>Why I Like Naruto</h2>
+    <ol>
+      <li>I like this anime because it has a good plot</li>
+      <li>Masashi Kishimoto's art style is very good, especially the perspective in this series.</li>
+      <li>Very good character development</li>
+    </ol>
+  </div>
+
+  <!-- QUOTES NARUTO -->
+  <div class="card quotes-card">
+    <h2>Characters Quotes</h2>
+
+    <div class="quote-item">
+      <p class="quote-text">"Those who do not understand true suffering will never understand true peace"</p>
+      <p class="quote-author">- Pain</p>
+    </div>
+
+    <div class="quote-item">
+      <p class="quote-text">"Those who break the rules are trash. But those who abandon their friends are worse than trash"</p>
+      <p class="quote-author">- Hatake Kakashi</p>
+    </div>
+
+    <div class="quote-item">
+      <p class="quote-text">"I will not run away, I never break my promises! That is my ninja way"</p>
+      <p class="quote-author">- Naruto Uzumaki</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
